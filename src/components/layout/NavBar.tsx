@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { AppBar, Toolbar, IconButton, Box, Typography } from '@mui/material';
+import { AppBar, Toolbar, IconButton, Box } from '@mui/material';
 
 const NavBar: React.FC = () => {
     return (
