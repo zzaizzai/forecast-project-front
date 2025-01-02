@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { fetchAllForecast } from "../../services/forecastService";
+import Button from '@mui/material/Button';
 
 const ForecastIndexPage: React.FC = () => {
 
@@ -24,6 +25,10 @@ const ForecastIndexPage: React.FC = () => {
         <>
             <div>
                 <h1>Forecast Index Page</h1>
+
+                <Button>button</Button>
+
+
                 <ul>
                     {forecastList.map((forecast, index) => (
                         <li key={index}>
@@ -35,6 +40,8 @@ const ForecastIndexPage: React.FC = () => {
                         </li>
                     ))}
                 </ul>
+
+
             </div>
         </>
 
