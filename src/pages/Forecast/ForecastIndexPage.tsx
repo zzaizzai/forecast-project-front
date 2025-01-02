@@ -26,8 +26,7 @@ const ForecastIndexPage: React.FC = () => {
             <div>
                 <h1>Forecast Index Page</h1>
 
-                <Button>button</Button>
-
+                <Button variant="contained">Add</Button>
 
                 <ul>
                     {forecastList.map((forecast, index) => (
