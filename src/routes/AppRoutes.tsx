@@ -6,6 +6,7 @@ import BaseLayout from "../components/layout/BaseLayout";
 import ForecastIndexPage from "../pages/Forecast/ForecastIndexPage";
 import ForecastDetailPage from "../pages/Forecast/ForecastDetailPage";
 import NotFoundPage from "../pages/NotFoundPage";
+import ResultIndexPage from "../pages/results/ResultIndexPage";
 
 const AppRoutes: React.FC = () => {
     return (
@@ -24,7 +25,7 @@ const AppRoutes: React.FC = () => {
                     <Route path="/forecast/detail" element={<ForecastDetailPage></ForecastDetailPage>}></Route>
 
                     {/* result */}
-                    <Route path="/result" element={<h3>result</h3>}></Route>
+                    <Route path="/result" element={<ResultIndexPage></ResultIndexPage>}></Route>
                     <Route path="/result/detail" element={<h3>result detail</h3>} ></Route>
                     <Route path="/*" element={<NotFoundPage></NotFoundPage>}></Route>
 
