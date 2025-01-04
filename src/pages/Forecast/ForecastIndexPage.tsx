@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import { formatDate } from "../../utils/dateUtils";
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 const ForecastIndexPage: React.FC = () => {
 
@@ -23,6 +24,7 @@ const ForecastIndexPage: React.FC = () => {
 
         fetchForecast();
     }, []);
+
     const columns: GridColDef[] = [
         { field: 'id', headerName: 'ID', width: 120 },
         { field: 'name', headerName: 'Name', width: 250 },
@@ -40,26 +42,30 @@ const ForecastIndexPage: React.FC = () => {
         },
         {
             field: 'updatedDate', headerName: 'Update Date', width: 150,
-            valueGetter: (value, row) => row.updatedDate ? formatDate(row.updatedDate) : 'unknown',
+            valueGetter: (_, row) => row.updatedDate ? formatDate(row.updatedDate) : 'unknown',
         },
         {
             field: 'createdDate', headerName: 'Create Date', width: 150,
-            valueGetter: (value, row) => row.createdDate ? formatDate(row.createdDate) : 'unknown',
+            valueGetter: (_, row) => row.createdDate ? formatDate(row.createdDate) : 'unknown',
         },
 
 
     ];
-    const paginationModel = { page: 0, pageSize: 5 };
+    const paginationModel = { page: 0, pageSize: 10 };
 
     return (
         <>
             <div>
                 <h1>Forecast Index Page</h1>
 
-                <Button variant="contained">Add</Button>
+                <input type="text" />
+                <Button>Search</Button>
+
+                <br />
+                <AddCircleIcon>Add</AddCircleIcon>
 
 
-                <Paper sx={{ height: 400, width: '100%' }}>
+                <Paper sx={{ height: 650, width: '100%' }}>
                     <DataGrid
                         rows={forecastList}
                         columns={columns}
@@ -69,53 +75,10 @@ const ForecastIndexPage: React.FC = () => {
                     />
                 </Paper>
 
-                <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-                    <thead>
-                        <tr>
-                            <th style={tableHeaderStyle}>ID</th>
-                            <th style={tableHeaderStyle}>Name</th>
-                            <th style={tableHeaderStyle}>Quantity</th>
-                            <th style={tableHeaderStyle}>Unit</th>
-                            <th style={tableHeaderStyle}>Created Date</th>
-                            <th style={tableHeaderStyle}>Updated Date</th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {forecastList.map((forecast, index) => (
-                            <tr key={index} style={tableRowStyle}>
-                                <td style={tableCellStyle}>{forecast.id}</td>
-                                <td style={tableCellStyle}>{forecast.name}</td>
-                                <td style={tableCellStyle}>{forecast.quantity}</td>
-                                <td style={tableCellStyle}>{forecast.unit}</td>
-                                <td style={tableCellStyle}>{formatDate(forecast.createdDate)}</td>
-                                <td style={tableCellStyle}>{formatDate(forecast.updatedDate)}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-
-
             </div>
         </>
 
     );
 };
-
-const tableHeaderStyle = {
-    border: '1px solid #ddd',
-    padding: '8px',
-    backgroundColor: '#f4f4f4',
-};
-
-const tableRowStyle = {
-    borderBottom: '1px solid #ddd',
-};
-
-const tableCellStyle = {
-    border: '1px solid #ddd',
-    padding: '8px'
-};
-
 
 export default ForecastIndexPage;
