@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const ResultAddPage: React.FC = () => {
     const [forecastId, setForecastId] = useState<string>("");
-    const [quantity, setQuantity] = useState<string>("");
+    const [quantity, setQuantity] = useState<string>("1000");
     const [unit, setUnit] = useState<string>("yen");
     const [name, setName] = useState<string>("namname");
 
@@ -14,7 +14,12 @@ const ResultAddPage: React.FC = () => {
     const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setQuantity(e.target.value);
     };
-
+    const handleUnitChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setUnit(e.target.value);
+    };
+    const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setName(e.target.value);
+    };
     const click = async () => {
         const requestData = { forecastId, quantity, unit, name };
 
@@ -37,7 +42,7 @@ const ResultAddPage: React.FC = () => {
 
                 setErrorMessages([...errorData]);
 
-                return; 
+                return;
             }
 
             setErrorMessages([]);
@@ -62,11 +67,28 @@ const ResultAddPage: React.FC = () => {
                 placeholder="Forecast ID"
             />
             <input
-                type="text"
+                type="number"
                 name="quantity"
                 value={quantity}
                 onChange={handleQuantityChange}
                 placeholder="Quantity"
+            />
+
+            <input
+                type="text"
+                name="unit"
+                value={unit}
+                onChange={handleUnitChange}
+                placeholder="Unit"
+            />
+
+
+            <input
+                type="text"
+                name="name"
+                value={name}
+                onChange={handleNameChange}
+                placeholder="Name"
             />
 
             <button onClick={click}>Submit</button>
